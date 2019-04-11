@@ -17,6 +17,7 @@ public class Main {
 
         uzytkownik1.setPassword();
         System.out.println(uzytkownik1.getPassword());
+        uzytkownik1.setSaldo(saldo);
         uzytkownik1.login();
 
 
@@ -24,9 +25,6 @@ public class Main {
 
       // uzytkowni2.login();
         //uzytkownik3.login();
-       System.out.println(uzytkownik1.getOwner());
-        uzytkownik1.setSaldo(saldo);
-        uzytkownik1.wplata();
         //System.out.println(uzytkownik1.getSaldo());
         //uzytkownik1.wyplata();
 

@@ -8,12 +8,12 @@ public class Konto extends PasswordGenerator {
 
     Scanner skaner = new Scanner(System.in);
 
-    private BigDecimal saldo;
+    private BigDecimal saldo = BigDecimal.ZERO;
     private String imie;
     private String nazwisko;
     private static double ID;
     private String password;
-    private BigDecimal kwota;
+    private BigDecimal kwota = BigDecimal.ZERO;
 
 
     protected Konto(String imie, String nazwisko, double ID) {
@@ -34,10 +34,10 @@ public class Konto extends PasswordGenerator {
         String pass = skaner.next();
         int x = 0;
 
-        do {
+
             if (password.equals(pass)) {
                 System.out.println("Hasło poprawne");
-
+            do{
                 System.out.println("Wybierz działanie: 1.wypłata, 2.wpłata, 3.środki na koncie 4.wyloguj");
                 x = skaner.nextInt();
 
@@ -54,11 +54,11 @@ public class Konto extends PasswordGenerator {
                     case 4:
                         System.out.println("Zapraszamy ponownie");
                         System.exit(0);
-
                 }
+            } while (x < 4);
             } else
                 System.out.println("Hasło niepoprawne");
-        } while (x < 4);
+
     }
 
 
@@ -73,7 +73,7 @@ public class Konto extends PasswordGenerator {
         System.out.println("Podaj wartość do wypłaty: ");
         kwota = skaner.nextBigDecimal();
 
-       if (saldo.compareTo(BigDecimal.ZERO) > 0 && kwota.compareTo(saldo) < saldo.compareTo(saldo.max(BigDecimal.valueOf(999999999)))) {// sprawdza, czy saldo jest większe od zera i czy kwota podana nie jest większa od salda
+       if (saldo.compareTo(BigDecimal.ZERO) > 0 && kwota.compareTo(saldo) < 0) {// sprawdza, czy saldo jest większe od zera i czy kwota podana nie jest większa od salda
 
             saldo = saldo.subtract(kwota);
             System.out.println("Twoje środki na koncie: " + saldo);
@@ -88,9 +88,8 @@ public class Konto extends PasswordGenerator {
         return ID;
     }
 
-    public BigDecimal getSaldo() {
-
-        return saldo;
+    public void getSaldo() {
+        System.out.println("Twoje środki na koncie: " + saldo);
 
     }
 
@@ -134,5 +133,6 @@ public class Konto extends PasswordGenerator {
                 ", ID=" + ID +
                 ' ';
     }
+
 }
 
